@@ -3,382 +3,517 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Social Media Copywriter</title>
-    <!-- Tailwind CSS untuk styling cepat dan modern -->
+    <title>Aiman Nu'maan | Strategic Copywriter</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Google: Plus Jakarta Sans untuk kesan profesional & modern -->
+    <!-- Font Google: Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #F8FAFC; /* Warna latar belakang abu-abu sangat muda */
-        }
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            touch-action: pan-y; /* Membiarkan scroll vertikal, tapi menangkap swipe horizontal */
-        }
-        .slide {
-            display: none;
-            width: 100%;
-            height: auto;
-            transition: opacity 0.3s ease-in-out;
-            user-select: none; /* Mencegah gambar ter-blok saat di-swipe */
-            -webkit-user-drag: none; /* Mencegah drag gambar default browser */
-        }
-        .slide.active {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0.8; }
-            to { opacity: 1; }
-        }
-        /* Kustomisasi scrollbar untuk area caption */
-        .custom-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scroll::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
-        .custom-scroll::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 3px;
-        }
-        .custom-scroll::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; scroll-behavior: smooth; }
+        
+        /* Carousel Styles */
+        .carousel-container { position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); touch-action: pan-y; }
+        .slide { display: none; width: 100%; height: auto; transition: opacity 0.3s ease-in-out; }
+        .slide.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0.8; } to { opacity: 1; } }
+
+        /* Modal Styles */
+        .modal { opacity: 0; visibility: hidden; transition: all 0.3s ease-in-out; }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal-content { transform: scale(0.95); transition: all 0.3s ease-in-out; }
+        .modal.active .modal-content { transform: scale(1); }
+        
+        /* Custom Scrollbar */
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
     </style>
 </head>
 <body class="text-slate-800">
 
-    <!-- Header / Navigasi Sederhana -->
-    <nav class="w-full bg-white border-b border-slate-200 py-4">
+    <!-- NAVIGASI -->
+    <nav class="w-full bg-white/80 backdrop-blur-md border-b border-slate-200 py-4 fixed top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
             <div class="text-xl font-bold tracking-tight text-slate-900">
                 Aiman Nu'maan<span class="text-blue-600">.</span>
             </div>
-            <div class="flex gap-6 text-sm font-medium text-slate-600">
-                <a href="#about" class="hover:text-blue-600 transition">Tentang</a>
-                <a href="#portfolio" class="hover:text-blue-600 transition">Portofolio</a>
-                <a href="#contact" class="hover:text-blue-600 transition">Kontak</a>
+            <div class="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+                <a href="#visual" class="hover:text-blue-600 transition">Visual</a>
+                <a href="#strategy" class="hover:text-blue-600 transition">Strategy</a>
+                <a href="#writing" class="hover:text-blue-600 transition">Writing</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="max-w-4xl mx-auto px-6 pt-20 pb-16 text-center">
-        <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">Social Media Copywriter</span>
+    <!-- HERO SECTION -->
+    <header class="max-w-4xl mx-auto px-6 pt-32 pb-16 text-center">
+        <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">Strategic Copywriter</span>
         <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
-            Mengubah "Scroll" Menjadi "Sales" Lewat Kata-Kata.
+            Merancang Alur Berpikir,<br>Bukan Sekadar Menulis Kata.
         </h1>
         <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Halo, saya Aiman Nu'maan. Saya membantu brand membangun koneksi dengan audiens melalui strategi konten yang relevan, <i>storytelling</i> yang kuat, dan copy yang persuasif.
+            Menghubungkan brand dan audiens di titik temu yang tepat—melalui strategi konten berbasis data, empati, dan struktur narasi yang kuat.
         </p>
     </header>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="max-w-6xl mx-auto px-6 pb-24">
-        <div class="flex items-center justify-between mb-8">
-            <h2 class="text-2xl font-bold text-slate-900">Featured Project</h2>
-            <span class="text-sm text-slate-500">Instagram Carousel • B2B Education</span>
+    <!-- SEGMEN 1: VISUAL SHOWCASE (Carousel) -->
+    <section id="visual" class="max-w-6xl mx-auto px-6 pb-24">
+        <div class="flex items-center justify-between mb-8 border-b border-slate-200 pb-4">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900">Featured Visual Campaign</h2>
+                <p class="text-slate-500 text-sm mt-1">Studi kasus konten Instagram B2B</p>
+            </div>
+            <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded font-medium">Social Media</span>
         </div>
 
-        <!-- Layout Grid: Kiri (Gambar) - Kanan (Copy & Strategi) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-slate-100">
-            
-            <!-- Kolom Kiri: Visual Carousel -->
+            <!-- Carousel Area -->
             <div class="lg:col-span-5 flex flex-col gap-4">
-                <!-- ID ditambahkan di sini untuk target swipe -->
                 <div id="swipeArea" class="carousel-container bg-slate-100 aspect-[4/5] flex items-center justify-center relative group cursor-grab active:cursor-grabbing">
-                    <!-- Images will be injected here via JS -->
-                    <!-- Tambahkan onerror agar jika gambar tidak ditemukan, muncul pesan bantuan -->
-                    <img id="currentImage" src="" alt="Slide Content" onerror="this.onerror=null; this.src='https://placehold.co/400x500?text=Gambar+Tidak+Ditemukan\nPastikan+nama+file+benar';" class="slide active object-contain w-full h-full pointer-events-none">
+                    <img id="currentImage" src="" alt="Slide Content" onerror="this.onerror=null; this.src='https://placehold.co/400x500?text=Gambar+Tidak+Ditemukan';" class="slide active object-contain w-full h-full pointer-events-none">
                     
-                    <!-- Navigation Buttons (Tetap ada untuk Desktop) -->
-                    <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition duration-300 z-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                    </button>
-                    <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition duration-300 z-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                    </button>
+                    <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition duration-300 z-10"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+                    <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition duration-300 z-10"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
                 </div>
-                
-                <!-- Slide Indicators/Thumbnails -->
                 <div class="flex justify-between items-center px-2">
-                    <span class="text-xs font-semibold text-slate-500">Slide <span id="slideCounter">1</span> dari 10</span>
-                    <div class="flex gap-1" id="dotsContainer">
-                        <!-- Dots generated by JS -->
-                    </div>
-                </div>
-                <div class="text-center lg:hidden">
-                    <span class="text-[10px] text-slate-400 uppercase tracking-widest">Swipe untuk geser &harr;</span>
+                    <span class="text-xs font-semibold text-slate-500">Slide <span id="slideCounter">1</span> / 10</span>
+                    <div class="flex gap-1" id="dotsContainer"></div>
                 </div>
             </div>
 
-            <!-- Kolom Kanan: Copywriting & Context -->
-            <div class="lg:col-span-7 flex flex-col h-full">
-                <div class="border-b border-slate-100 pb-6 mb-6">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Judul: Gosip Bisnis Wajib Tahu ☕</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Sebuah konten edukasi untuk pemilik bisnis (UMKM) yang membahas pentingnya retensi pelanggan dibandingkan akuisisi, dikemas dengan gaya bahasa santai ("gosip") dan visual meme agar tidak membosankan.
-                    </p>
-                </div>
-
-                <!-- Tabungan Strategi & Caption -->
-                <div class="flex gap-6 mb-4 border-b border-slate-200">
-                    <button onclick="switchTab('caption')" id="btn-caption" class="pb-2 text-sm font-bold text-blue-600 border-b-2 border-blue-600 transition">Caption Preview</button>
-                    <button onclick="switchTab('strategy')" id="btn-strategy" class="pb-2 text-sm font-medium text-slate-500 hover:text-slate-800 transition">Creative Strategy</button>
-                </div>
-
-                <!-- Konten Tab: Caption -->
-                <div id="content-caption" class="bg-slate-50 p-5 rounded-xl border border-slate-100 flex-grow custom-scroll overflow-y-auto max-h-[400px]">
-                    <p class="text-sm font-mono text-slate-500 mb-2">@username_bisnis</p>
-                    <div class="prose prose-sm text-slate-700 space-y-3">
-                        <p><strong>⚠️ PERINGATAN: Konten ini mengandung fakta yang "nyelekit" tapi bisa bikin dompet bisnis kamu lebih tebal!</strong></p>
-                        
-                        <p>Pernah nggak sih ngerasa boncos bakar duit buat iklan nyari pelanggan baru, eh pas udah beli sekali, mereka ilang kayak ditelan bumi? 👻</p>
-                        
-                        <p>Sini merapat, kita "gosipin" fakta dari jurnal bisnis:</p>
-                        <p>Ternyata, nyari 1 pelanggan baru itu biayanya <strong>5X LIPAT</strong> lebih mahal daripada ngerawat pelanggan lama lho! 😱</p>
-                        
-                        <p>Banyak yang fokus jualan (akuisisi), tapi lupa "pacaran" (retensi). Padahal kuncinya ada di 4 Pondasi Hubungan:</p>
-                        <ul class="list-disc pl-4">
-                            <li>Trust (Jangan cuma transaksional)</li>
-                            <li>Satisfaction (Realita > Harapan)</li>
-                            <li>Communication (Jangan ghosting!)</li>
-                            <li>Commitment (Bikin mereka bucin sama brand kamu)</li>
-                        </ul>
-                        
-                        <p>Geser ke kiri buat liat bedah lengkapnya pake bahasa manusia (bukan bahasa robot)! 👉</p>
-                        
-                        <p>Coba jujur di kolom komentar, dari 4 pondasi di atas, mana yang paling sering "bolong" di bisnis kamu? 👇</p>
-                        
-                        <p class="text-blue-600">
-                            #TipsBisnis #MarketingStrategy #RetentionMarketing #UMKMNaikKelas #BelajarBisnis #CustomerLoyalty #CopywritingIndonesia
-                        </p>
+            <!-- Context Area -->
+            <div class="lg:col-span-7 flex flex-col justify-center">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Gosip Bisnis: Retensi vs Akuisisi</h3>
+                <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                    Mengubah jurnal bisnis yang kaku menjadi konten "gosip" yang renyah untuk audiens UMKM. Strategi ini meningkatkan <i>engagement</i> dengan memecah konsep berat menjadi meme dan bahasa sehari-hari.
+                </p>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                        <span class="block font-bold text-slate-700">Objective</span>
+                        <span class="text-slate-500">Edukasi B2B Fun</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                        <span class="block font-bold text-slate-700">Tone</span>
+                        <span class="text-slate-500">Witty & Relatable</span>
                     </div>
                 </div>
-
-                <!-- Konten Tab: Strategy (Hidden by default) -->
-                <div id="content-strategy" class="hidden space-y-4">
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <h4 class="font-bold text-blue-800 text-sm mb-1">Target Audiens</h4>
-                        <p class="text-sm text-blue-700">Pemilik bisnis kecil-menengah & Reseller yang sering mengeluh biaya iklan mahal.</p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <h4 class="font-bold text-slate-800 text-sm mb-1">Hook</h4>
-                            <p class="text-sm text-slate-600">Menggunakan kata "Gosip" dan "Nyelekit" untuk memicu rasa ingin tahu (curiosity gap).</p>
-                        </div>
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <h4 class="font-bold text-slate-800 text-sm mb-1">Tone of Voice</h4>
-                            <p class="text-sm text-slate-600">Conversational, Witty (cerdas tapi lucu), dan Relatable (menggunakan analogi pacaran).</p>
-                        </div>
-                    </div>
-                    <div class="bg-green-50 p-4 rounded-lg">
-                        <h4 class="font-bold text-green-800 text-sm mb-1">Goal (Tujuan)</h4>
-                        <p class="text-sm text-green-700">Meningkatkan <i>Saves</i> (karena materi daging) dan <i>Shares</i> (karena meme lucu), serta membangun otoritas brand.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-12 text-center" id="contact">
-        <h2 class="text-2xl font-bold text-slate-900 mb-4">Siap bekerjasama?</h2>
-        <p class="text-slate-600 mb-6">Saya terbuka untuk proyek freelance atau posisi full-time.</p>
-        
-        <!-- Tombol Email -->
-        <a href="mailto:aimannumaan0602@gmail.com" class="inline-block bg-slate-900 text-white font-medium py-3 px-8 rounded-full hover:bg-slate-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 mb-8">
-            Hubungi Saya
-        </a>
+    <!-- SEGMEN 2: STRATEGIC CASE STUDIES (Achievements & Essays) -->
+    <section id="strategy" class="max-w-6xl mx-auto px-6 pb-24 bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+        <div class="text-center mb-12">
+            <span class="text-blue-600 font-bold tracking-wider text-xs uppercase">Strategic Portfolio</span>
+            <h2 class="text-3xl font-bold text-slate-900 mt-2">Bedah Strategi & Pemikiran</h2>
+            <p class="text-slate-500 mt-2">Klik kartu untuk melihat detail strategi di balik setiap karya.</p>
+        </div>
 
-        <!-- Link Sosial Media -->
-        <div class="flex justify-center gap-6 items-center flex-wrap">
-            <!-- Instagram (Visual) -->
-            <a href="https://www.instagram.com/etherea.im/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-pink-600 transition transform hover:scale-110 group relative" title="Instagram @etherea.im">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-                <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] bg-slate-800 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Visual</span>
-            </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <!-- TikTok (Video) -->
-            <a href="https://www.tiktok.com/@notbemineeee" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-black transition transform hover:scale-110 group relative" title="TikTok @notbemineeee">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
-                </svg>
-                <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] bg-slate-800 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Video</span>
-            </a>
+            <!-- Kartu 1: Lensa yang Jujur -->
+            <div class="group bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-200 rounded-xl p-6 transition-all duration-300 hover:shadow-lg cursor-pointer" onclick="openModal('modal1')">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-yellow-100 text-yellow-800 text-[10px] font-bold px-2 py-1 rounded">JUARA HARAPAN 3</span>
+                    <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600 transition">Narasi Fiksi Etis: Lensa yang Jujur</h3>
+                <p class="text-sm text-slate-600 line-clamp-3">Menggugat eksploitasi 'Poverty Porn' melalui realisme magis. Bagaimana fiksi bisa menjadi kritik sosial yang halus namun menohok.</p>
+                <div class="mt-4 text-xs font-semibold text-blue-600 flex items-center gap-1">
+                    Bedah Strategi <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+            </div>
 
-            <!-- Divider -->
-            <div class="w-px h-6 bg-slate-300 mx-2"></div>
+            <!-- Kartu 2: Seribu Wajah Ayah -->
+            <div class="group bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-200 rounded-xl p-6 transition-all duration-300 hover:shadow-lg cursor-pointer" onclick="openModal('modal2')">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-yellow-100 text-yellow-800 text-[10px] font-bold px-2 py-1 rounded">JUARA 1 NASIONAL</span>
+                     <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600 transition">Resensi Empatik: Seribu Wajah Ayah</h3>
+                <p class="text-sm text-slate-600 line-clamp-3">Mengubah ulasan buku menjadi "cermin emosional". Strategi 'Vulnerable Storytelling' untuk meruntuhkan tembok arketipe ayah yang kaku.</p>
+                <div class="mt-4 text-xs font-semibold text-blue-600 flex items-center gap-1">
+                    Bedah Strategi <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+            </div>
 
-            <!-- Medium (Writing) -->
-            <a href="https://medium.com/@aimannumaan0602" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-black transition transform hover:scale-110 group relative" title="Medium - Tulisan Opini">
-                <!-- Icon Medium -->
-                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.82 24 12z"/>
-                </svg>
-                <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] bg-slate-800 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Writing</span>
-            </a>
+            <!-- Kartu 3: Kintsugi Jiwa -->
+            <div class="group bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-200 rounded-xl p-6 transition-all duration-300 hover:shadow-lg cursor-pointer" onclick="openModal('modal3')">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-1 rounded">18 BESAR NASIONAL</span>
+                     <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600 transition">Sintesis Filosofis: Kintsugi Jiwa</h3>
+                <p class="text-sm text-slate-600 line-clamp-3">Menggabungkan Growth Mindset (Sains) dengan Konsep Bala' (Teologi). Panduan restorasi diri yang logis untuk Gen Z yang lelah.</p>
+                <div class="mt-4 text-xs font-semibold text-blue-600 flex items-center gap-1">
+                    Bedah Strategi <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+            </div>
 
-            <!-- Quora (Knowledge) -->
-            <a href="https://id.quora.com/profile/Aim-23" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-red-700 transition transform hover:scale-110 group relative" title="Quora - Q&A">
-                <!-- Icon Quora -->
-                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                    <path d="M11.96 2.05c-5.46 0-9.91 4.22-9.91 9.42 0 2.21.82 4.25 2.19 5.86l-.54 3.65c-.09.6.61 1.01 1.12.67l3.29-2.22c1.17.48 2.45.74 3.79.74 5.46 0 9.91-4.22 9.91-9.42S17.42 2.05 11.96 2.05z"/>
-                </svg>
-                <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] bg-slate-800 text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Q&A</span>
-            </a>
+             <!-- Kartu 4: Opini Publik (Quora) -->
+             <div class="group bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-200 rounded-xl p-6 transition-all duration-300 hover:shadow-lg cursor-pointer" onclick="openModal('modal4')">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-red-100 text-red-800 text-[10px] font-bold px-2 py-1 rounded">QUORA CAMPAIGN</span>
+                     <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600 transition">Opini Publik: Vonis vs Analisis</h3>
+                <p class="text-sm text-slate-600 line-clamp-3">Mendekonstruksi penghakiman sosial tentang kemiskinan. Strategi 'Two-Phase Argument' untuk mengubah debat panas menjadi dialog.</p>
+                <div class="mt-4 text-xs font-semibold text-blue-600 flex items-center gap-1">
+                    Bedah Strategi <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+            </div>
+
+            <!-- Kartu 5: Habit Stacking -->
+            <div class="group bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-200 rounded-xl p-6 transition-all duration-300 hover:shadow-lg cursor-pointer" onclick="openModal('modal5')">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-1 rounded">CONCEPTUAL</span>
+                     <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600 transition">Habit Stacking & Spiritual</h3>
+                <p class="text-sm text-slate-600 line-clamp-3">Menjembatani Atomic Habits dengan Surah Asy-Syarh. Strategi 'Conceptual Anchoring' untuk membuat konten produktivitas lebih 'nampol'.</p>
+                <div class="mt-4 text-xs font-semibold text-blue-600 flex items-center gap-1">
+                    Bedah Strategi <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+            </div>
+
+             <!-- Kartu 6: Bom Waktu Metabolik -->
+             <div class="group bg-slate-50 hover:bg-white border border-slate-200 hover:border-blue-200 rounded-xl p-6 transition-all duration-300 hover:shadow-lg cursor-pointer" onclick="openModal('modal6')">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-green-100 text-green-800 text-[10px] font-bold px-2 py-1 rounded">HEALTH ADVOCACY</span>
+                     <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-blue-600 transition">Bom Waktu Metabolik</h3>
+                <p class="text-sm text-slate-600 line-clamp-3">Advokasi kesehatan strategis. Mengubah data medis resistensi insulin menjadi narasi urgensi nasional untuk pembuat kebijakan.</p>
+                <div class="mt-4 text-xs font-semibold text-blue-600 flex items-center gap-1">
+                    Bedah Strategi <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+            </div>
 
         </div>
+    </section>
 
-        <div class="mt-12 text-sm text-slate-400">
-            &copy; 2025 Aiman Nu'maan. Dibuat untuk Portofolio.
+    <!-- SEGMEN 3: WRITING HIGHLIGHTS (Medium & Quora) -->
+    <section id="writing" class="max-w-4xl mx-auto px-6 pt-16 pb-24">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6 border-l-4 border-slate-900 pl-4">Tulisan Pilihan (Medium & Quora)</h2>
+        <div class="space-y-4">
+            
+            <!-- Tulisan 1 -->
+            <div onclick="openModal('modal7')" class="bg-white p-5 rounded-xl border border-slate-200 hover:border-slate-400 transition group cursor-pointer">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="text-xs font-bold text-red-700 bg-red-50 px-2 py-1 rounded">QUORA</span>
+                    <span class="text-xs text-slate-500">Psychology & Relationship</span>
+                </div>
+                <h3 class="font-bold text-slate-800 group-hover:text-blue-600 transition">Psikologi Persahabatan: Validate First, Advise Later</h3>
+                <p class="text-sm text-slate-600 mt-1">Mengedukasi audiens tentang perbedaan krusial antara simpati dan empati dalam mendukung orang yang terluka.</p>
+                <div class="mt-3 text-xs font-semibold text-blue-600 flex items-center gap-1">
+                    Bedah Strategi <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+            </div>
+
+            <!-- Tulisan 2 -->
+            <div onclick="openModal('modal8')" class="bg-white p-5 rounded-xl border border-slate-200 hover:border-slate-400 transition group cursor-pointer">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="text-xs font-bold text-slate-800 bg-slate-100 px-2 py-1 rounded">MEDIUM</span>
+                    <span class="text-xs text-slate-500">Spiritual Deconstruction</span>
+                </div>
+                <h3 class="font-bold text-slate-800 group-hover:text-blue-600 transition">It’s Okay to Be Sad: Menggugat 'Religious Toxic Positivity'</h3>
+                <p class="text-sm text-slate-600 mt-1">Meluruskan konsep kesabaran dan syukur sebagai proses aktif yang memvalidasi rasa sakit, bukan denial.</p>
+                <div class="mt-3 text-xs font-semibold text-blue-600 flex items-center gap-1">
+                    Bedah Strategi <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+            </div>
+
         </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-12 text-center" id="contact">
+        <h2 class="text-2xl font-bold mb-4">Siap Berkolaborasi?</h2>
+        <p class="text-slate-400 mb-8 max-w-md mx-auto">Terbuka untuk kolaborasi proyek freelance atau posisi full-time. Fokus pada copywriting yang tidak hanya menulis, tapi juga membangun alur berpikir.</p>
+        
+        <div class="flex justify-center gap-6 mb-8">
+            <a href="mailto:aimannumaan0602@gmail.com" class="bg-white text-slate-900 px-6 py-2 rounded-full font-bold hover:bg-blue-50 transition">Email Me</a>
+            <a href="https://www.linkedin.com/in/aiman-nu-maan-02957b2b7/" target="_blank" class="border border-white/30 text-white px-6 py-2 rounded-full font-bold hover:bg-white/10 transition">LinkedIn</a>
+        </div>
+        
+        <div class="text-sm text-slate-500">&copy; 2025 Aiman Nu'maan.</div>
     </footer>
 
-    <!-- Script Logika -->
-    <script>
-        // Data Gambar
-        const images = [
-            "1.png",  // Judul
-            "2.png",  // Nyelekit tapi fakta
-            "3.png",  // 4 Pondasi intro
-            "4.png",  // Pondasi 1
-            "5.png",  // Pondasi 2
-            "6.png",  // Pondasi 3
-            "7.png",  // Pondasi 4
-            "8.png",  // Studi Kasus Tokopedia
-            "9.png",  // Kesimpulan
-            "10.png"  // CTA
-        ];
 
+    <!-- MODALS (POP-UP) -->
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+        <div class="modal-content bg-white w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl relative custom-scroll">
+            <button onclick="closeModal('modal1')" class="absolute top-4 right-4 bg-slate-100 p-2 rounded-full hover:bg-slate-200">&times;</button>
+            <div class="p-8">
+                <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded mb-4 inline-block">Achievement</span>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Lensa yang Jujur: Menggugat Poverty Porn</h2>
+                
+                <div class="space-y-6 text-slate-700 text-sm leading-relaxed">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Background</h4>
+                        <p>Tren "eksotisme" visual sering terjebak dalam eksploitasi kemiskinan demi estetika. Kritik diperlukan tanpa terdengar menggurui.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Strategy: Metafora "Lensa Memberontak"</h4>
+                        <p>Menggunakan elemen semi-magis di mana kamera menolak bekerja saat niat penggunanya tidak tulus. Ini menyimbolkan "suara hati" yang termaterialisasi.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Result</h4>
+                        <p>Juara Harapan 3 Lomba Cerpen Nasional (Disdikbud Banten). Mengubah topik etika berat menjadi narasi emosional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+        <div class="modal-content bg-white w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl relative custom-scroll">
+            <button onclick="closeModal('modal2')" class="absolute top-4 right-4 bg-slate-100 p-2 rounded-full hover:bg-slate-200">&times;</button>
+            <div class="p-8">
+                <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded mb-4 inline-block">Achievement</span>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Seribu Wajah Ayah: Resensi Empatik</h2>
+                
+                <div class="space-y-6 text-slate-700 text-sm leading-relaxed">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Background</h4>
+                        <p>Sosok ayah sering terjebak dalam arketipe kaku: pelindung tak bersuara. Ini menciptakan jarak emosional.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Strategy: Vulnerable Storytelling</h4>
+                        <p>Membuka tulisan dengan pengakuan jujur tentang kondisi pribadi untuk menurunkan pertahanan pembaca. Membedah ayah sebagai "manusia", bukan sekadar peran.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Result</h4>
+                        <p>Juara 1 Lomba Nasional (Ngajiliterasi). Efektif memicu percakapan emosional tentang orang tua.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+        <div class="modal-content bg-white w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl relative custom-scroll">
+            <button onclick="closeModal('modal3')" class="absolute top-4 right-4 bg-slate-100 p-2 rounded-full hover:bg-slate-200">&times;</button>
+            <div class="p-8">
+                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded mb-4 inline-block">Achievement</span>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Kintsugi Jiwa: Sintesis Sains & Teologi</h2>
+                
+                <div class="space-y-6 text-slate-700 text-sm leading-relaxed">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Objective</h4>
+                        <p>Menciptakan "Panduan Restorasi Diri" yang logis untuk mengatasi kelelahan eksistensial akhir tahun.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Strategy: Bridging Data & Philosophy</h4>
+                        <p>Mengintegrasikan Growth Mindset (Carol Dweck) dengan Konsep Bala' (Ujian). Mengadaptasi tahapan fisik Kintsugi menjadi tahapan psikologis.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Result</h4>
+                        <p>18 Besar Lomba Esai Nasional (USK Aceh). Diapresiasi karena sintesis ide lintas budaya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div id="modal4" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+        <div class="modal-content bg-white w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl relative custom-scroll">
+            <button onclick="closeModal('modal4')" class="absolute top-4 right-4 bg-slate-100 p-2 rounded-full hover:bg-slate-200">&times;</button>
+            <div class="p-8">
+                <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded mb-4 inline-block">Campaign</span>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Opini Publik: Vonis vs Analisis</h2>
+                
+                <div class="space-y-6 text-slate-700 text-sm leading-relaxed">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Background</h4>
+                        <p>Diskusi isu sensitif (kemiskinan) di sosmed sering terjebak penghakiman dangkal.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Strategy: Two-Phase Argument</h4>
+                        <p>Fase 1: Dekonstruksi emosional menggunakan analogi. Fase 2: Validasi menggunakan data riset ilmiah sebagai "pukulan telak".</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Result</h4>
+                        <p>Viral di Quora. Berhasil mengubah debat panas menjadi dialog berbasis data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div id="modal5" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+        <div class="modal-content bg-white w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl relative custom-scroll">
+            <button onclick="closeModal('modal5')" class="absolute top-4 right-4 bg-slate-100 p-2 rounded-full hover:bg-slate-200">&times;</button>
+            <div class="p-8">
+                <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded mb-4 inline-block">Conceptual</span>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Habit Stacking & Spiritual</h2>
+                
+                <div class="space-y-6 text-slate-700 text-sm leading-relaxed">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Objective</h4>
+                        <p>Membuat konten produktivitas yang tidak generik, tapi beresonansi dengan nilai spiritual audiens lokal.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Strategy: Conceptual Anchoring</h4>
+                        <p>Menautkan konsep 'Atomic Habits' pada Surah Asy-Syarh: 7. Menggunakan alur "Aha! Moment" untuk memberikan kejutan koneksi di akhir.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Result</h4>
+                        <p>Viralitas tinggi karena keunikan sintesis ide Barat dan nilai Spiritual.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div id="modal6" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+        <div class="modal-content bg-white w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl relative custom-scroll">
+            <button onclick="closeModal('modal6')" class="absolute top-4 right-4 bg-slate-100 p-2 rounded-full hover:bg-slate-200">&times;</button>
+            <div class="p-8">
+                <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded mb-4 inline-block">Advocacy</span>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Bom Waktu Metabolik</h2>
+                
+                <div class="space-y-6 text-slate-700 text-sm leading-relaxed">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Background</h4>
+                        <p>Krisis kesehatan "tersembunyi" berupa resistensi insulin pada generasi muda akibat pangan ultra-proses.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Strategy: Metafora "Bom Waktu"</h4>
+                        <p>Menciptakan urgensi nasional. Membedah framework "Satiety" (Rasa Kenyang) untuk menyerang akar perilaku makan berlebih.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Result</h4>
+                        <p>Esai berbasis bukti (Evidence-Based) yang siap pakai untuk kampanye kebijakan publik.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 7 (NEW) -->
+    <div id="modal7" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+        <div class="modal-content bg-white w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl relative custom-scroll">
+            <button onclick="closeModal('modal7')" class="absolute top-4 right-4 bg-slate-100 p-2 rounded-full hover:bg-slate-200">&times;</button>
+            <div class="p-8">
+                <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded mb-4 inline-block">Quora Psychology</span>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Validate First, Advise Later</h2>
+                
+                <div class="space-y-6 text-slate-700 text-sm leading-relaxed">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Background</h4>
+                        <p>Seringkali kita terburu-buru memberi saran teknis saat teman curhat, padahal yang mereka butuhkan pertama kali adalah validasi emosi. Ini menciptakan jarak, bukan kedekatan.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Strategy: The Empathy Shift</h4>
+                        <p>Mengubah pola pikir dari "Fixing Mode" (memperbaiki masalah) menjadi "Holding Space" (memberi ruang). Menggunakan formula komunikasi: Validasi Emosi -> Tanyakan Kebutuhan -> Baru Beri Saran (Jika Diminta).</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Result</h4>
+                        <p>Artikel ini membangun otoritas penulis dalam topik kecerdasan emosional dan hubungan interpersonal.</p>
+                    </div>
+                    <div class="pt-4">
+                         <a href="https://id.quora.com/profile/Aim-23" target="_blank" class="inline-block bg-red-700 text-white font-bold py-2 px-6 rounded-full hover:bg-red-800 transition shadow-lg">Baca Tulisan Asli di Quora &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 8 (NEW) -->
+    <div id="modal8" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4">
+        <div class="modal-content bg-white w-full max-w-2xl max-h-[80vh] overflow-y-auto rounded-2xl shadow-2xl relative custom-scroll">
+            <button onclick="closeModal('modal8')" class="absolute top-4 right-4 bg-slate-100 p-2 rounded-full hover:bg-slate-200">&times;</button>
+            <div class="p-8">
+                <span class="bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded mb-4 inline-block">Medium Spiritual</span>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">It’s Okay to Be Sad: Menggugat Toxic Positivity</h2>
+                
+                <div class="space-y-6 text-slate-700 text-sm leading-relaxed">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Background</h4>
+                        <p>Istilah agama seperti "sabar" dan "syukur" sering disalahgunakan untuk menekan emosi negatif (denial), seolah-olah orang beriman tidak boleh sedih.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Strategy: Concept Reclaim</h4>
+                        <p>Mengambil kembali makna asli kesabaran melalui narasi Nabi Ya'qub (yang menangis hingga buta) dan Nabi Muhammad SAW. Mengenalkan Muhasabah dan Tawakkul sebagai mekanisme koping yang jujur, bukan topeng kebahagiaan palsu.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Result</h4>
+                        <p>Memberikan ruang aman bagi pembaca untuk menjadi manusiawi sepenuhnya dalam bingkai keimanan.</p>
+                    </div>
+                    <div class="pt-4">
+                         <a href="https://medium.com/@aimannumaan0602" target="_blank" class="inline-block bg-slate-900 text-white font-bold py-2 px-6 rounded-full hover:bg-slate-700 transition shadow-lg">Baca Tulisan Asli di Medium &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- LOGIC CAROUSEL (Sama seperti sebelumnya) ---
+        const images = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png"];
         let currentIndex = 0;
         const imgElement = document.getElementById('currentImage');
         const counterElement = document.getElementById('slideCounter');
         const dotsContainer = document.getElementById('dotsContainer');
         const swipeArea = document.getElementById('swipeArea');
 
-        // Init
-        function initGallery() {
-            imgElement.src = images[0];
-            renderDots();
-        }
-
+        function initGallery() { imgElement.src = images[0]; renderDots(); }
         function renderDots() {
             dotsContainer.innerHTML = '';
             images.forEach((_, idx) => {
                 const dot = document.createElement('div');
-                dot.className = `h-2 w-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-blue-600 w-4' : 'bg-slate-300'}`;
+                dot.className = `h-1.5 w-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-blue-600 w-3' : 'bg-slate-300'}`;
                 dotsContainer.appendChild(dot);
             });
         }
-
         function showSlide(index) {
             imgElement.classList.remove('active');
-            
             setTimeout(() => {
                 imgElement.src = images[index];
-                imgElement.onload = () => {
-                    imgElement.classList.add('active');
-                };
+                imgElement.onload = () => { imgElement.classList.add('active'); };
                 counterElement.innerText = index + 1;
                 renderDots();
             }, 100);
         }
+        function nextSlide() { currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0; showSlide(currentIndex); }
+        function prevSlide() { currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1; showSlide(currentIndex); }
 
-        function nextSlide() {
-            if (currentIndex < images.length - 1) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-            showSlide(currentIndex);
-        }
-
-        function prevSlide() {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = images.length - 1;
-            }
-            showSlide(currentIndex);
-        }
-
-        // ============================
-        // FITUR SWIPE (Touch Logic)
-        // ============================
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const minSwipeDistance = 50; // Minimal geser 50px baru dianggap swipe
-
-        // Mendeteksi saat jari menyentuh layar
-        swipeArea.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-
-        // Mendeteksi saat jari diangkat (selesai swipe)
+        // Touch Logic
+        let touchStartX = 0; let touchEndX = 0;
+        swipeArea.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
         swipeArea.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
+            if (touchEndX - touchStartX < -50) nextSlide();
+            if (touchEndX - touchStartX > 50) prevSlide();
         }, {passive: true});
-
-        function handleSwipe() {
-            // Hitung jarak swipe
-            let distance = touchEndX - touchStartX;
-            
-            // Jika geser ke Kiri (jarak negatif) -> Next Slide
-            if (distance < -minSwipeDistance) {
-                nextSlide();
-            }
-            
-            // Jika geser ke Kanan (jarak positif) -> Prev Slide
-            if (distance > minSwipeDistance) {
-                prevSlide();
-            }
-        }
-
-        // Tab Switching Logic
-        function switchTab(tabName) {
-            const captionContent = document.getElementById('content-caption');
-            const strategyContent = document.getElementById('content-strategy');
-            const btnCaption = document.getElementById('btn-caption');
-            const btnStrategy = document.getElementById('btn-strategy');
-
-            if (tabName === 'caption') {
-                captionContent.classList.remove('hidden');
-                strategyContent.classList.add('hidden');
-                btnCaption.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
-                btnCaption.classList.remove('text-slate-500');
-                btnStrategy.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
-                btnStrategy.classList.add('text-slate-500');
-            } else {
-                captionContent.classList.add('hidden');
-                strategyContent.classList.remove('hidden');
-                btnStrategy.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
-                btnStrategy.classList.remove('text-slate-500');
-                btnCaption.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
-                btnCaption.classList.add('text-slate-500');
-            }
-        }
-
-        // Keyboard Navigation
-        document.addEventListener('keydown', function(event) {
-            if(event.key === "ArrowRight") nextSlide();
-            if(event.key === "ArrowLeft") prevSlide();
-        });
 
         initGallery();
 
+        // --- LOGIC MODAL (POP-UP) ---
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop scroll belakang
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto'; // Resume scroll
+        }
+        // Close modal kalau klik di luar area putih
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
     </script>
 </body>
 </html>
